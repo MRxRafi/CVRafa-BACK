@@ -1,4 +1,6 @@
 {
+    "name": "cvrafa/back",
+    "description": "Back End of my Curriculum",
     "type": "project",
     "license": "proprietary",
     "minimum-stability": "dev",
