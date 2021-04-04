@@ -46,7 +46,7 @@ jobs:
       - name: Run test suite
         run: vendor/bin/phpunit -c phpunit.xml.dist --coverage-clover=coverage-report.clover --log-junit=test-report.xml
         env:
-          DATABASE_URL: mysql://root:root@mysql:3306/cvrafa_tests?serverVersion=5.7
+          DATABASE_URL: mysql://root:root@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/cvrafa_tests?serverVersion=5.7
 
       - name: Sonar Scanner
         run: >
