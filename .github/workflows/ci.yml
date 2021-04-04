@@ -1,0 +1,52 @@
+name: CI CVRafa Back
+
+on:
+  push:
+    branches:
+      - 'master'
+
+jobs:
+  test:
+    name: Build - Test - SonarCloud Scan
+    runs-on: ubuntu-latest
+
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: cvrafa_tests
+        ports:
+          - 3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Validate composer.json and composer.lock
+        run: composer validate --strict
+
+      - name: Cache Composer packages
+        id: composer-cache
+        uses: actions/cache@v2
+        with:
+          path: vendor
+          key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-php-
+
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress
+
+      - name: Run test suite
+        run: vendor/bin/phpunit -c phpunit.xml.dist --coverage-clover=coverage-report.clover --log-junit=test-report.xml
+        env:
+          DATABASE_URL: mysql://root:root@127.0.0.1:3306/cvrafa_tests?serverVersion=5.7
+
+      - name: Sonar Scanner
+        run: >
+        sonar-scanner
+        -Dsonar.projectKey=CVRafa.BACK
+        -Dsonar.organization=mrxrafi
+        -Dsonar.host.url=https://sonarcloud.io
+        -Dsonar.login=$SONAR_TOKEN
