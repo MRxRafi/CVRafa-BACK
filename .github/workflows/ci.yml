@@ -45,8 +45,8 @@ jobs:
 
       - name: Sonar Scanner
         run: >
-        sonar-scanner
-        -Dsonar.projectKey=CVRafa.BACK
-        -Dsonar.organization=mrxrafi
-        -Dsonar.host.url=https://sonarcloud.io
-        -Dsonar.login=$SONAR_TOKEN
+          sonar-scanner
+          -Dsonar.projectKey=CVRafa.BACK
+          -Dsonar.organization=mrxrafi
+          -Dsonar.host.url=https://sonarcloud.io
+          -Dsonar.login=$SONAR_TOKEN
