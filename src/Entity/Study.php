@@ -43,6 +43,22 @@ class Study implements JsonSerializable
      */
     private $language;
 
+    /**
+     * Study constructor.
+     * @param string $degree
+     * @param string $place
+     * @param float $score
+     * @param string $date
+     * @param string $language
+     */
+    public function __construct(string $degree, string $place, float $score, string $date, string $language) {
+        $this->degree = $degree;
+        $this->place = $place;
+        $this->score = $score;
+        $this->date = $date;
+        $this->language = $language;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -108,15 +124,15 @@ class Study implements JsonSerializable
         return $this;
     }
 
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
-        return [
+        return array(
             'id' => $this->id,
             'degree' => $this->degree,
             'place' => $this->place,
             'score' => $this->score,
             'date' => $this->date,
             'language' => $this->language
-        ];
+        );
     }
 }

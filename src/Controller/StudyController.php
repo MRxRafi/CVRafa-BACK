@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 
 class StudyController extends AbstractController
 {
-    public const RUTA_API = '/studies';
+    // public const RUTA_API = '/studies';
 
     private StudyRepository $studyRepository;
 
