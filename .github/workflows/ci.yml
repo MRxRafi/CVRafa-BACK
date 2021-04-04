@@ -44,14 +44,12 @@ jobs:
         run: composer install --prefer-dist --no-progress
 
       - name: Run test suite
-        run: vendor/bin/phpunit -c phpunit.xml.dist --coverage-clover=coverage-report.clover --log-junit=test-report.xml
+        run: vendor/bin/phpunit -c phpunit.xml.dist --coverage-clover=coverage-report.clover.xml --log-junit=test-report.xml
         env:
           DATABASE_URL: mysql://root:root@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/cvrafa_tests?serverVersion=5.7
 
       - name: Sonar Scanner
         uses: sonarsource/sonarcloud-github-action@master
-        with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
