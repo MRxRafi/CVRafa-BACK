@@ -56,6 +56,7 @@ jobs:
           sed -i 's/\/home\/runner\/work\/CVRafa-BACK\/CVRafa-BACK\//\/github\/workspace\//g' test-report.xml
 
       - name: Sonar Scanner
+        if: success()
         uses: sonarsource/sonarcloud-github-action@master
         with:
           args: >
