@@ -1,3 +1,7 @@
 index:
     path: /studies
     controller: App\Controller\StudyController::cgetAction
+
+frameworks:
+    path: /frameworks
+    controller: App\Controller\FrameworkController::cgetAction

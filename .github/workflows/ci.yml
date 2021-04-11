@@ -48,6 +48,11 @@ jobs:
         env:
           DATABASE_URL: mysql://root:root@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/cvrafa_tests?serverVersion=5.7
 
+      - name: Fix code coverage paths
+        run: |
+          sed -i 's/\/home\/runner\/work\/CVRafa-BACK\/CVRafa-BACK\//\/github\/workspace\//g' coverage-report.xml
+          sed -i 's/\/home\/runner\/work\/CVRafa-BACK\/CVRafa-BACK\//\/github\/workspace\//g' test-report.xml
+
       - name: Sonar Scanner
         uses: sonarsource/sonarcloud-github-action@master
         with:

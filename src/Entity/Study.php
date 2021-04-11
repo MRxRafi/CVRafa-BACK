@@ -16,32 +16,32 @@ class Study implements JsonSerializable
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private int $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $degree;
+    private string $degree;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $place;
+    private string $place;
 
     /**
      * @ORM\Column(type="decimal", precision=4, scale=2)
      */
-    private $score;
+    private float $score;
 
     /**
      * @ORM\Column(type="string", length=10)
      */
-    private $date;
+    private string $date;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $language;
+    private string $language;
 
     /**
      * Study constructor.
