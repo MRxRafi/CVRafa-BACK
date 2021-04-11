@@ -10,7 +10,6 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 
 class FrameworkController extends AbstractController
 {
-    // public const RUTA_API = '/framework';
 
     private FrameworkRepository $frameworkRepository;
 
@@ -23,4 +22,5 @@ class FrameworkController extends AbstractController
             ->findAll();
         return new JsonResponse($frameworks);
     }
+
 }

@@ -31,18 +31,25 @@ class Framework implements JsonSerializable
     /**
      * @ORM\Column(type="string", length=255)
      */
+    private string $frameworkType;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
     private string $name;
 
     /**
      * Framework constructor.
      * @param float $knowledge
      * @param float $experienceYears
+     * @param string $frameworkType
      * @param string $name
      */
-    public function __construct(float $knowledge, float $experienceYears, string $name)
+    public function __construct(float $knowledge, float $experienceYears, string $frameworkType, string $name)
     {
         $this->knowledge = $knowledge;
         $this->experienceYears = $experienceYears;
+        $this->frameworkType = $frameworkType;
         $this->name = $name;
     }
 
@@ -75,6 +82,16 @@ class Framework implements JsonSerializable
         return $this;
     }
 
+    public function getFrameworkType(): string
+    {
+        return $this->frameworkType;
+    }
+
+    public function setFrameworkType(string $frameworkType): self
+    {
+        $this->frameworkType = $frameworkType;
+    }
+
     public function getName(): ?string
     {
         return $this->name;
@@ -93,7 +110,8 @@ class Framework implements JsonSerializable
             'id' => $this->id,
             'name' => $this->name,
             'knowledge' => $this->knowledge,
-            'experienceYears' => $this->experienceYears
+            'experienceYears' => $this->experienceYears,
+            'frameworkType' => $this->frameworkType
         );
     }
 }

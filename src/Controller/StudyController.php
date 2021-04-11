@@ -10,7 +10,6 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 
 class StudyController extends AbstractController
 {
-    // public const RUTA_API = '/studies';
 
     private StudyRepository $studyRepository;
 
@@ -23,4 +22,5 @@ class StudyController extends AbstractController
             ->findAll();
         return new JsonResponse($studies);
     }
+
 }

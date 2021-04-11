@@ -5,6 +5,7 @@ namespace App\Tests\Controller;
 
 
 use App\Entity\Framework;
+use App\Entity\FrameworkType;
 use App\Entity\Study;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Tools\SchemaTool;
@@ -48,8 +49,8 @@ class BaseTestCase extends WebTestCase
         // Insertar datos de prueba
         $study_es = new Study('Bachillerato', 'IES Cañada Real', 6.8, '2014-2016', 'ES');
         $study_en = new Study('High School', 'IES Cañada Real', 6.8, '2014-2016', 'EN');
-        $framework_1 = new Framework(3.5, 1, 'Angular');
-        $framework_2 = new Framework(2.5, 0.5, 'Android Studio');
+        $framework_1 = new Framework(3.5, 1, FrameworkType::FRONT_END, 'Angular');
+        $framework_2 = new Framework(2.5, 0.5, FrameworkType::FRONT_END, 'Android Studio');
 
         $e_manager->persist($study_es);
         $e_manager->persist($study_en);
