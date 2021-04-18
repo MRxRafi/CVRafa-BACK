@@ -3,6 +3,7 @@ name: CI CVRafa Back
 on:
   push:
     branches:
+      - 'develop'
       - 'master'
 
 jobs:
