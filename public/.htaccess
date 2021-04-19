@@ -64,3 +64,6 @@ DirectoryIndex index.php
         # RedirectTemp cannot be used instead
     </IfModule>
 </IfModule>
+
+# Allow Cross Origin Access
+Header set Access-Control-Allow-Origin "*"
